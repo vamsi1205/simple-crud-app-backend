@@ -1,7 +1,10 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const productRoute = require("./routes/product.route.js");
 const app = express();
+const port = process.env.PORT || 3000;
 
 // middleware
 app.use(express.json());
@@ -15,13 +18,11 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://veluruvamsi1994:GHKCfF33sPwito7h@backenddb.9pbfc.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to Database!");
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
     });
   })
   .catch(() => {
