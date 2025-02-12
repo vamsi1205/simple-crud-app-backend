@@ -13,8 +13,10 @@ app.use(express.urlencoded({ extended: false }));
 // routes
 app.use("/api/products", productRoute);
 
-app.get("/", (req, res) => {
-  res.send(`Vamsi is back!`);
+app.get("/api/vamsi", (req, res) => {
+  return res.status(200).json({
+    message: `Vamsi is back!`,
+  });
 });
 
 mongoose
