@@ -5,6 +5,18 @@ const mongoose = require("mongoose");
 const productRoute = require("./routes/product.route.js");
 const app = express();
 const port = process.env.PORT || 3000;
+const cors = require("cors");
+
+// cors
+app.use(cors());
+// For specific domain
+// app.use(
+//   cors({
+//     origin: ["http://your-frontend-domain.com"], // Replace with your frontend URL
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
 
 // middleware
 app.use(express.json());
